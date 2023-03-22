@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('user_id');
             $table->string('name');
-            $table->string('input');
+            $table->string('input')->nullable();
         });
     }
 
