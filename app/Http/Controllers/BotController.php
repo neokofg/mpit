@@ -75,7 +75,7 @@ class BotController extends Controller
                         'status' => 'login'
                     );
                     Telegram::where('user_id', '=', $update->message->from->id)->update($userdata);
-
+                    $user = $user->fresh();
                     $formFields = array([
                         'email' => $user->input,
                         'password' => $update->message->text
