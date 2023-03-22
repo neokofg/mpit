@@ -67,7 +67,8 @@
                     </svg>Cars</a>
                         </div>
                     </div>
-                </div><a class="header__item" href="/about">О нас</a>
+                </div>
+                <a class="header__item" href=""></a>
                 <div class="header__item header__item_language js-header-item">
                     <button class="header__head js-header-head">
                         <box-icon class="icon icon-globe" name='user'></box-icon>Вход
@@ -214,7 +215,30 @@
             </div>
         </div>
         <div class="section catalog">
-
+            <div class="sorting">
+                <div class="sorting__center center">
+                    <div class="sorting__body">
+                        <div class="sorting__box">
+                            <h2 class="sorting__title h2">Места для отдыха</h2>
+                            <div class="sorting__line">
+                                <div class="sorting__sale">100+ мест</div>
+                                <div class="sorting__details">Март 22 - Март 25</div>
+                            </div>
+                        </div>
+                        <div class="sorting__location">
+                            <button class="button-stroke sorting__button js-sorting-button"><span>Показать карту</span>
+                        <svg class="icon icon-arrow-bottom">
+                          <use xlink:href="#icon-arrow-bottom"></use>
+                        </svg>
+                      </button>
+                            <div class="sorting__map js-sorting-map">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63817.0803287881!2d168.63234961382247!3d-45.04173987887954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa9d51df1d7a8de5f%3A0x500ef868479a600!2z0JrRg9C40L3RgdGC0LDRg9C9LCDQndC-0LLQsNGPINCX0LXQu9Cw0L3QtNC40Y8!5e0!3m2!1sru!2sua!4v1624887132616!5m2!1sru!2sua"
+                                    width="600" height="450" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="catalog__body">
                 <div class="catalog__center center">
@@ -250,11 +274,70 @@
                                 </div>
                             </div>
                         </a>
-
+                        <a class="card" href="">
+                            <div class="card__preview"><img srcset="img/content/card-pic-1@2x.jpg 2x" src="img/content/card-pic-1.jpg" alt="Entire serviced classy moutain house">
+                            </div>
+                            <div class="card__body">
+                                <div class="card__line">
+                                    <div class="card__title">Турбаза Серебро</div>
+                                    <div class="card__price">
+                                        <div class="card__actual">От 3500 ₽</div>
+                                    </div>
+                                </div>
+                                <div class="card__options">
+                                    <div class="card__option">
+                                        <box-icon class="icon icon-modem" name='map'></box-icon>Местоположения
+                                    </div>
+                                </div>
+                                <div class="card__foot">
+                                    <div class="card__flex">
+                                        <div class="travels__date">Март 22 - Март 25</div>
+                                        <div class="card__rating">
+                                            <svg class="icon icon-star">
+                                <use xlink:href="#icon-star"></use>
+                              </svg>
+                                            <div class="card__number">4.8</div>
+                                            <div class="card__reviews">(2 Отзывов)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="card" href="">
+                            <div class="card__preview"><img srcset="img/content/card-pic-1@2x.jpg 2x" src="img/content/card-pic-1.jpg" alt="Entire serviced classy moutain house">
+                            </div>
+                            <div class="card__body">
+                                <div class="card__line">
+                                    <div class="card__title">Турбаза Серебро</div>
+                                    <div class="card__price">
+                                        <div class="card__actual">От 3500 ₽</div>
+                                    </div>
+                                </div>
+                                <div class="card__options">
+                                    <div class="card__option">
+                                        <box-icon class="icon icon-modem" name='map'></box-icon>Местоположения
+                                    </div>
+                                </div>
+                                <div class="card__foot">
+                                    <div class="card__flex">
+                                        <div class="travels__date">Март 22 - Март 25</div>
+                                        <div class="card__rating">
+                                            <svg class="icon icon-star">
+                                <use xlink:href="#icon-star"></use>
+                              </svg>
+                                            <div class="card__number">4.8</div>
+                                            <div class="card__reviews">(2 Отзывов)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                     <div class="catalog__btns">
                         <button class="button-stroke catalog__button">
-                      <div class="loader"></div><span>Show more</span>
+                      Показать все
                     </button>
                     </div>
                 </div>
@@ -268,29 +351,21 @@
             <div class="footer__row">
                 <div class="footer__col">
                     <a class="footer__logo" href="index.html"><img class="some-icon" src="img/logo-dark.svg" alt="Fleet"><img class="some-icon-dark" src="img/logo-light.svg" alt="Fleet"></a>
-                    <div class="footer__theme">
-                        <svg class="icon icon-bulb">
+                </div>
+                <div class="footer__col">
+                    <div class="footer__menu"></div>
+                </div>
+                <div class="footer__col">
+                    <div class="footer__copyright">
+                        <div class="footer__theme">
+                            <svg class="icon icon-bulb">
                       <use xlink:href="#icon-bulb"></use>
-                    </svg>Dark theme
-                        <label class="theme js-theme">
+                    </svg>Черная тема
+                            <label class="theme js-theme">
                       <input class="theme__input" type="checkbox"/><span class="theme__inner"><span class="theme__box"></span></span>
                     </label>
+                        </div>
                     </div>
-                </div>
-                <div class="footer__col">
-                    <div class="footer__menu"><a class="footer__link" href="index.html">Stays</a><a class="footer__link" href="flights.html">Flights</a><a class="footer__link" href="support.html">Support</a><a class="footer__link" href="cars.html">Cars</a><a class="footer__link"
-                            href="things-to-do.html">Things to do</a></div>
-                </div>
-                <div class="footer__col">
-                    <div class="footer__info">Join our community 🔥</div>
-                    <form class="subscription">
-                        <input class="subscription__input" type="email" name="email" placeholder="Enter your email" required="required" />
-                        <button class="subscription__btn">
-                      <svg class="icon icon-arrow-next">
-                        <use xlink:href="#icon-arrow-next"></use>
-                      </svg>
-                    </button>
-                    </form>
                 </div>
             </div>
             <div class="footer__bottom">
