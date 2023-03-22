@@ -46,6 +46,10 @@ class BotController extends Controller
                         ];
                         $response = Http::get("https://api.telegram.org/bot6112927855:AAF-Rc36LyNcLeFuyjJw8vdEfDBw_QEnhMo/sendMessage?" . http_build_query($data));
                     }else{
+                        $userdata = array(
+                            'status' => 'started',
+                        );
+                        Telegram::where('user_id', '=', $update->message->from->id)->update($userdata);
                         $data = [
                             'chat_id' => $update->message->chat->id,
                             'reply_to_message_id' => $update->message->message_id,
@@ -108,6 +112,12 @@ class BotController extends Controller
                         ];
                         $response = Http::get("https://api.telegram.org/bot6112927855:AAF-Rc36LyNcLeFuyjJw8vdEfDBw_QEnhMo/sendMessage?" . http_build_query($data));
                     }
+                } else {
+                    $data = [
+                        'chat_id' => $update->message->chat->id,
+                        'text' => 'Сброс: /start',
+                    ];
+                    $response = Http::get("https://api.telegram.org/bot6112927855:AAF-Rc36LyNcLeFuyjJw8vdEfDBw_QEnhMo/sendMessage?" . http_build_query($data));
                 }
             }
         } catch (\Exception $e) {
