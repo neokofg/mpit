@@ -14,7 +14,13 @@ class Booking extends Model
         'date',
         'peoples',
         'tourbase_id',
-        'status'
+        'status',
+        'user_id'
     ];
     protected $table = 'booking';
+
+    public function tourbase()
+    {
+        return $this->belongsTo('App\Models\Tourbase', 'tourbase_id');
+    }
 }

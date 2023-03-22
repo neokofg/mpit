@@ -13,6 +13,7 @@ class Tourbase extends Model
         'name',
         'description',
         'images',
-        'coords'
+        'coords',
+        'rating'
     ];
 }

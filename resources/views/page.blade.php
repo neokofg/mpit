@@ -57,6 +57,7 @@
 </div>
     <p>{{$tourbase->name}}</p>
     <p>{{$tourbase->description}}</p>
+    <p>@isset($tourbase->rating){{$tourbase->rating}}@endisset</p>
     <div id="map"></div>
     <h2>Забронировать</h2>
     <form action="{{route('createNewBooking')}}" method="POST">
@@ -75,6 +76,28 @@
         <p>Дата: {{$booking->date}}</p>
         <p>Количество людей: {{$booking->peoples}}</p>
         <p>Номер: {{$booking->phone}}</p>
+    @endforeach
+    <h2>Комментарии</h2>
+    <p>Оставить комментарий:</p>
+    <form action="{{route('createNewRating')}}" method="POST">
+        @csrf
+        <input type="hidden" name="id" value="{{$tourbase->id}}">
+        <textarea name="text" id="" cols="30" rows="10"></textarea>
+        <div class="d-flex col-3 mt-3 text-center">
+            <input name="rating" class="form-range col" id="range" type="range" min="1" max="5" step="1">
+            <span class="col d-flex justify-content-center">
+                <p class="text-dark" id="rangeValue">3</p>
+                <span class="material-symbols-outlined" style="color:gold">star</span>
+            </span>
+        </div>
+        <button>submit</button>
+    </form>
+    @foreach($ratings as $rating)
+        <div style="border: 1px solid black">
+            <p>{{$rating->user->name}}</p>
+            <p>{{$rating->rating}}</p>
+            <p>{{$rating->text}}</p>
+        </div>
     @endforeach
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -112,12 +135,14 @@
                 alert('Эта дата недоступна');
                 // Очищаем значение инпута
                 $dateInput.val('');
-            } else {
-                // Преобразуем формат даты из YYYY-MM-DD в DD.MM.YYYY
-                const formattedDate = selectedDate.split('-').reverse().join('.');
-                // Устанавливаем значение инпута в формате DD.MM.YYYY
-                $dateInput.val(formattedDate);
             }
         });
+</script>
+<script type="text/javascript">
+    const range = document.getElementById('range');
+    const rangeValue = document.getElementById('rangeValue');
+    range.oninput = function(){
+        rangeValue.innerHTML = range.value;
+    }
 </script>
 </html>

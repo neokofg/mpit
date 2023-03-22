@@ -15,20 +15,27 @@
         width: 600px;
         height: 400px;
     }
+    #map2 {
+        width: 100%;
+        height: 600px;
+    }
 </style>
 <body>
     @if(Auth::check())
         <h2>Вы вошли!</h2>
+        <a href="{{route('profile')}}">Личный кабинет</a>
         <a href="{{route('auth.logoutUser')}}">Выйти</a>
         @foreach($tourbases as $tourbase)
             <div style="border: 1px solid black">
                 <p>{{$tourbase->name}}</p>
                 <p>{{$tourbase->description}}</p>
+                <p>@isset($tourbase->rating){{$tourbase->rating}}({{App\Models\Rating::where('tourbase_id', $tourbase->id)->count()}} Отзыва!)@endisset</p>
                 <a href="{{route('page',$tourbase->id)}}">Перейти</a>
             </div>
         @endforeach
+        @if(Auth::user()->role == 1)
         <h2>Создать турбазу</h2>
-        <form action="{{route('createTourBase')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('admin.createTourBase')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="text" name="name" placeholder="name">
             <br>
@@ -42,6 +49,7 @@
             <br>
             <button>submit</button>
         </form>
+        @endif
     @else
     <h2>Регистрация</h2>
     <form action="{{route('auth.createUser')}}" method="POST">
@@ -64,6 +72,7 @@
         <button>submit</button>
     </form>
     @endif
+    <div id="map2"></div>
     <script>
         ymaps.ready(init);
 
@@ -94,6 +103,21 @@
                 $('#coords').val(coords);
                 console.log(coords)
             });
+
+            var myMap2 = new ymaps.Map("map2", {
+                center: [62.03, 129.73],
+                zoom: 10,
+                suppressMapOpenBlock: true
+            });
+            @foreach($tourbases as $tourbase)
+            var myPlacemark{{$tourbase->id}} = new ymaps.Placemark([{{$tourbase->coords}}], {
+                hintContent: 'Метка'
+            }, {
+                preset: 'islands#icon',
+                iconColor: '#0095b6'
+            });
+                myMap2.geoObjects.add(myPlacemark{{$tourbase->id}});
+            @endforeach
         }
     </script>
 </body>

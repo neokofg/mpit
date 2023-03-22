@@ -17,6 +17,7 @@ use App\Http\Controllers\TourBaseController;
 */
 
 Route::get('/', [GetController::class, 'getIndex'])->name('index');
+Route::get('/profile', [GetController::class, 'getProfile'])->name('profile');
 Route::get('/page/{id}', [GetController::class, 'getPage'])->name('page');
 
 Route::name('auth.')->group(function(){
@@ -25,5 +26,11 @@ Route::name('auth.')->group(function(){
     Route::get('/logoutUser', [AuthController::class, 'logoutUser'])->name('logoutUser');
 });
 
-Route::post('/createTourBase',[TourBaseController::class, 'createTourBase'])->name('createTourBase');
-Route::post('/createNewBooking', [TourBaseController::class, 'createNewBooking'])->name('createNewBooking');
+Route::name('admin.')->middleware('isAdmin')->group(function(){
+    Route::post('/createTourBase',[TourBaseController::class, 'createTourBase'])->name('createTourBase');
+
+});
+Route::middleware('auth')->group(function(){
+    Route::post('/createNewBooking', [TourBaseController::class, 'createNewBooking'])->name('createNewBooking');
+    Route::post('/createNewRating', [TourBaseController::class, 'createNewRating'])->name('createNewRating');
+});
