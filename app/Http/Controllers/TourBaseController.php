@@ -81,7 +81,7 @@ class TourBaseController extends Controller
         if(isset($tourbasePush->botUser)){
             $data = [
                 'chat_id' => $tourbasePush->botUser,
-                'text' => 'К вам пришло новое бронирование!',
+                'text' => 'К вам пришло новое бронирование!'.PHP_EOL.'Дата:'.$date.PHP_EOL.'Телефон:'.$phone.PHP_EOL.'Людей:'.$peoples,
             ];
             $response = Http::get("https://api.telegram.org/bot6112927855:AAF-Rc36LyNcLeFuyjJw8vdEfDBw_QEnhMo/sendMessage?" . http_build_query($data));
         }
