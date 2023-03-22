@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GetController;
+use App\Http\Controllers\TourBaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [GetController::class, 'getIndex'])->name('index');
+Route::get('/page/{id}', [GetController::class, 'getPage'])->name('page');
+
+Route::name('auth.')->group(function(){
+    Route::post('/createUser', [AuthController::class, 'createUser'])->name('createUser');
+    Route::post('/loginUser', [AuthController::class, 'loginUser'])->name('loginUser');
+    Route::get('/logoutUser', [AuthController::class, 'logoutUser'])->name('logoutUser');
 });
+
+Route::post('/createTourBase',[TourBaseController::class, 'createTourBase'])->name('createTourBase');
+Route::post('/createNewBooking', [TourBaseController::class, 'createNewBooking'])->name('createNewBooking');
