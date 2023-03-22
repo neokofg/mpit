@@ -15,22 +15,35 @@ class GetController extends Controller
         $tourbases = Tourbase::take(9)->get();
         return view('welcome', compact(['tourbases']));
     }
+
     protected function getPage($id)
     {
-        $tourbase = Tourbase::where('id',$id)->first();
+        $tourbase = Tourbase::where('id', $id)->first();
 
         $images = $tourbase->images;
-        $images = json_decode($images,true);
+        $images = json_decode($images, true);
 
-        $bookings = Booking::where('tourbase_id',$tourbase->id)->get();
+        $bookings = Booking::where('tourbase_id', $tourbase->id)->get();
         $dates = $bookings->pluck('date')->toArray();
 
         $ratings = Rating::where('tourbase_id', $tourbase->id)->get();
 
-        return view('page', compact(['tourbase','images','bookings','dates','ratings']));
+        return view('page', compact(['tourbase', 'images', 'bookings', 'dates', 'ratings']));
     }
-    protected function getProfile(){
-        $bookings = Booking::where('user_id',Auth::user()->id)->get();
-        return view('profile',compact(['bookings']));
+
+    protected function getProfile()
+    {
+        $bookings = Booking::where('user_id', Auth::user()->id)->get();
+        return view('profile', compact(['bookings']));
+    }
+
+    protected function getSearch(Request $request)
+    {
+        $search = $request->input('search');
+        return view('search',compact(['search']));
+    }
+    protected function getAdmin()
+    {
+        return view('admin');
     }
 }

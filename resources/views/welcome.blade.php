@@ -9,6 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=be203022-19da-4b49-8bcb-5ca04a8cb7ea&lang=ru_RU" type="text/javascript">
     </script>
+    @livewireStyles
 </head>
 <style>
     #map {
@@ -21,6 +22,8 @@
     }
 </style>
 <body>
+    <h2>Поиск</h2>
+    @livewire('search-tourbases')
     @if(Auth::check())
         <h2>Вы вошли!</h2>
         <a href="{{route('profile')}}">Личный кабинет</a>
@@ -33,23 +36,6 @@
                 <a href="{{route('page',$tourbase->id)}}">Перейти</a>
             </div>
         @endforeach
-        @if(Auth::user()->role == 1)
-        <h2>Создать турбазу</h2>
-        <form action="{{route('admin.createTourBase')}}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <input type="text" name="name" placeholder="name">
-            <br>
-            <textarea name="description" id="" cols="30" rows="10" placeholder="description"></textarea>
-            <br>
-            <input type="file" name="images[]" multiple>
-            <br>
-            <label for="coords">Координаты турбазы</label>
-            <input type="text" name="coords" id="coords" value="62.03, 129.73">
-            <div id="map"></div>
-            <br>
-            <button>submit</button>
-        </form>
-        @endif
     @else
     <h2>Регистрация</h2>
     <form action="{{route('auth.createUser')}}" method="POST">
@@ -111,7 +97,7 @@
             });
             @foreach($tourbases as $tourbase)
             var myPlacemark{{$tourbase->id}} = new ymaps.Placemark([{{$tourbase->coords}}], {
-                hintContent: 'Метка'
+                hintContent: '{{$tourbase->name}}'
             }, {
                 preset: 'islands#icon',
                 iconColor: '#0095b6'
@@ -120,5 +106,6 @@
             @endforeach
         }
     </script>
+    @livewireScripts
 </body>
 </html>

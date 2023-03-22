@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tourbases', function (Blueprint $table) {
+        Schema::create('tourbase_users', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('name');
-            $table->string('coords');
-            $table->text('description');
-            $table->text('images');
-            $table->float('rating')->nullable();
+            $table->foreignId('tourbase_id')->references('id')->on('tourbases');
+            $table->foreignId('user_id')->references('id')->on('users');
         });
     }
 
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tourbases');
+        Schema::dropIfExists('tourbase_users');
     }
 };

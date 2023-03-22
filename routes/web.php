@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GetController;
 use App\Http\Controllers\TourBaseController;
+use App\Http\Controllers\BotController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ use App\Http\Controllers\TourBaseController;
 Route::get('/', [GetController::class, 'getIndex'])->name('index');
 Route::get('/profile', [GetController::class, 'getProfile'])->name('profile');
 Route::get('/page/{id}', [GetController::class, 'getPage'])->name('page');
+Route::get('/search', [GetController::class, 'getSearch'])->name('search');
 
 Route::name('auth.')->group(function(){
     Route::post('/createUser', [AuthController::class, 'createUser'])->name('createUser');
@@ -28,9 +30,11 @@ Route::name('auth.')->group(function(){
 
 Route::name('admin.')->middleware('isAdmin')->group(function(){
     Route::post('/createTourBase',[TourBaseController::class, 'createTourBase'])->name('createTourBase');
-
+    Route::get('/admin',[GetController::class, 'getAdmin'])->name('getAdmin');
 });
 Route::middleware('auth')->group(function(){
     Route::post('/createNewBooking', [TourBaseController::class, 'createNewBooking'])->name('createNewBooking');
     Route::post('/createNewRating', [TourBaseController::class, 'createNewRating'])->name('createNewRating');
 });
+
+Route::post('/6112927855:AAF-Rc36LyNcLeFuyjJw8vdEfDBw_QEnhMo/webhook', [BotController::class , 'botResponse']);
