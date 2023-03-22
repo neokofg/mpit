@@ -60,15 +60,9 @@
     <p>@isset($tourbase->rating){{$tourbase->rating}}@endisset</p>
     <div id="map"></div>
     <h2>Забронировать</h2>
-    <form action="{{route('createNewBooking')}}" method="POST">
+    <form action="{{route('payBooking')}}" method="POST">
         @csrf
         <input type="hidden" name="id" value="{{$tourbase->id}}">
-        <input type="date" id="date-input" name="date">
-        <br>
-        <input type="number" name="peoples" placeholder="peoples">
-        <br>
-        <input type="tel" name="phone" id="phone" placeholder="+7 (___) ___-__-__">
-        <br>
         <button>submit</button>
     </form>
     <h2>Брони</h2>

@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GetController;
 use App\Http\Controllers\TourBaseController;
 use App\Http\Controllers\BotController;
+use App\Http\Controllers\MoneyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,8 +34,11 @@ Route::name('admin.')->middleware('isAdmin')->group(function(){
     Route::get('/admin',[GetController::class, 'getAdmin'])->name('getAdmin');
 });
 Route::middleware('auth')->group(function(){
-    Route::post('/createNewBooking', [TourBaseController::class, 'createNewBooking'])->name('createNewBooking');
+    Route::post('/payBooking', [GetController::class, 'payBooking'])->name('payBooking');
+    Route::post('/payment', [MoneyController::class, 'payment'])->name('payment');
     Route::post('/createNewRating', [TourBaseController::class, 'createNewRating'])->name('createNewRating');
 });
 
 Route::post('/6112927855:AAF-Rc36LyNcLeFuyjJw8vdEfDBw_QEnhMo/webhook', [BotController::class , 'botResponse']);
+
+Route::post('/createNewBooking/{id}/{phone}/{peoples}/{date}/{billId}', [TourBaseController::class, 'createNewBooking'])->name('createNewBooking');

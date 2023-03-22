@@ -46,4 +46,12 @@ class GetController extends Controller
     {
         return view('admin');
     }
+    protected function payBooking(Request $request)
+    {
+        $validateFields = $request->validate([
+            'id' => 'required'
+        ]);
+        $tourbase_id = $request->input('id');
+        return view('pay',compact(['tourbase_id']));
+    }
 }

@@ -13,7 +13,9 @@
         "laravel/scout": "^10.0",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^2.12",
-        "meilisearch/meilisearch-php": "^1.0"
+        "meilisearch/meilisearch-php": "^1.0",
+        "qiwi/bill-payments-php-sdk": "^0.2.2",
+        "yandex-money/yandex-money-sdk-php": "^3.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
