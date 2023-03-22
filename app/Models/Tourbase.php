@@ -15,7 +15,8 @@ class Tourbase extends Model
         'description',
         'images',
         'coords',
-        'rating'
+        'rating',
+        'location'
     ];
     public function searchableAs()
     {

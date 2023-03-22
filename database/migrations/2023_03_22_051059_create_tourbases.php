@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('coords');
             $table->text('description');
             $table->text('images');
+            $table->text('location');
             $table->float('rating')->nullable();
         });
     }

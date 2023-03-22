@@ -54,4 +54,12 @@ class GetController extends Controller
         $tourbase_id = $request->input('id');
         return view('pay',compact(['tourbase_id']));
     }
+    protected function getLogin()
+    {
+        return view('login');
+    }
+    protected function getRegister()
+    {
+        return view('register');
+    }
 }

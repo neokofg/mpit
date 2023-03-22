@@ -20,7 +20,7 @@ class MoneyController extends Controller
     protected function payment(Request $request)
     {
         $validateFields = $request->validate([
-            'date' => 'required|date',
+            'date' => 'required',
             'peoples' => 'required|integer',
             'phone' => 'required',
             'tourbase_id' => 'required'

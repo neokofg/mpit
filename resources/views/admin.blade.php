@@ -20,6 +20,8 @@
         @csrf
         <input type="text" name="name" placeholder="name">
         <br>
+        <input type="text" name="location" placeholder="location">
+        <br>
         <textarea name="description" id="" cols="30" rows="10" placeholder="description"></textarea>
         <br>
         <input type="file" name="images[]" multiple>

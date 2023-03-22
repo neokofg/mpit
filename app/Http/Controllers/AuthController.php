@@ -26,7 +26,7 @@ class AuthController extends Controller
             Auth::login($user);
             return redirect()->to(route('index'));
         }
-        return redirect(route(''))->withErrors([
+        return redirect(route('register'))->withErrors([
             'formError' => 'Произошла ошибка при сохранении пользователя'
         ]);
     }
@@ -38,7 +38,7 @@ class AuthController extends Controller
         {
             return redirect()->intended(route('index'));
         }
-        return redirect(route('index'))->withErrors([
+        return redirect(route('login'))->withErrors([
             'email'=> 'Не удалось авторизироваться'
         ]);
     }

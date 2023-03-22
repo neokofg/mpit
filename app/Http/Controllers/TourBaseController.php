@@ -20,6 +20,7 @@ class TourBaseController extends Controller
             'name' => 'required',
             'description' => 'required',
             'coords' => 'required',
+            'location' => 'required',
             'images' => 'required',
             'images.*' =>'mimes:jpeg,png,jpg,gif,svg'
         ]);
@@ -33,6 +34,7 @@ class TourBaseController extends Controller
                 $name = $request->input('name');
                 $description = $request->input('description');
                 $coords = $request->input('coords');
+                $location = $request->input('location');
                 foreach($request->file('images') as $key => $image) {
                     $fileName = date('YmdHi').$image->hashName();
                     $image->move(public_path('images'), $fileName);
@@ -43,6 +45,7 @@ class TourBaseController extends Controller
                     'name' => $name,
                     'description' => $description,
                     'coords' => $coords,
+                    'location' => $location,
                     'images' => json_encode($insert)
                 ]);
 

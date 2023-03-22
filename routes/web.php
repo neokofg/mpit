@@ -23,6 +23,9 @@ Route::get('/profile', [GetController::class, 'getProfile'])->name('profile');
 Route::get('/page/{id}', [GetController::class, 'getPage'])->name('page');
 Route::get('/search', [GetController::class, 'getSearch'])->name('search');
 
+Route::get('/login',[GetController::class,'getLogin'])->name('login');
+Route::get('/register',[GetController::class,'getRegister'])->name('register');
+
 Route::name('auth.')->group(function(){
     Route::post('/createUser', [AuthController::class, 'createUser'])->name('createUser');
     Route::post('/loginUser', [AuthController::class, 'loginUser'])->name('loginUser');
