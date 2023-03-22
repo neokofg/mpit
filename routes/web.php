@@ -41,4 +41,4 @@ Route::middleware('auth')->group(function(){
 
 Route::post('/6112927855:AAF-Rc36LyNcLeFuyjJw8vdEfDBw_QEnhMo/webhook', [BotController::class , 'botResponse']);
 
-Route::post('/createNewBooking/{id}/{phone}/{peoples}/{date}/{billId}', [TourBaseController::class, 'createNewBooking'])->name('createNewBooking');
+Route::get('/createNewBooking/{id}/{phone}/{peoples}/{date}/{billId}', [TourBaseController::class, 'createNewBooking'])->name('createNewBooking');

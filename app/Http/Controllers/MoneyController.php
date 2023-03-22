@@ -40,14 +40,6 @@ class MoneyController extends Controller
         $uuid = Uuid::uuid4();
         $billId = $uuid->toString();
 
-        $params = [
-            'date' => $date,
-            'peoples' => $peoples,
-            'phone' => $phone,
-            'tourbase_id' => $tourbase_id,
-            'billId' => $billId
-        ];
-
         $fields = [
             'amount' => 1.00,
             'currency' => 'RUB',
@@ -55,7 +47,7 @@ class MoneyController extends Controller
             'expirationDateTime' => $iso8601String,
             'email' => 'wotacc0809@gmail.com',
             'account' => 'client4563',
-            'successUrl' => 'http://tourclick.online/'. http_build_query($params),
+            'successUrl' => 'http://tourclick.online/createNewBooking/'.$tourbase_id.'/'.$phone.'/'.$peoples.'/'.$date.'/'.$billId ,
         ];
 
         /** @var \Qiwi\Api\BillPayments $billPayments */
