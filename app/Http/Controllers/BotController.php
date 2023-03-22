@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Telegram;
-use App\Models\Tourbase;
 use App\Models\TourbaseUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -59,47 +58,6 @@ class BotController extends Controller
                         'text' => 'Введите свой email'
                     ];
                     $response = Http::get("https://api.telegram.org/bot6112927855:AAF-Rc36LyNcLeFuyjJw8vdEfDBw_QEnhMo/sendMessage?" . http_build_query($data));
-                }
-            } else if ($user->status == 'started') {
-                $userdata = array(
-                    'status' => 'password',
-                    'input' => $update->message->text
-                );
-                Telegram::where('user_id', '=', $update->message->from->id)->update($userdata);
-                $data = [
-                    'chat_id' => $update->message->chat->id,
-                    'text' => 'Пароль',
-                    'reply_to_message_id' => $update->message->message_id,
-                ];
-                $response = Http::get("https://api.telegram.org/bot5716304295:AAHVDPCzodAQOwQU5G-7kLfRUU7AVa2VTRg/sendMessage?" . http_build_query($data));
-            } else if ($user->status == 'password') {
-                $userdata = array(
-                    'status' => 'login'
-                );
-                Telegram::where('user_id', '=', $update->message->from->id)->update($userdata);
-
-                $formFields = array([
-                   'email' => $user->input,
-                    'password' => $update->message->text
-                ]);
-                $auth = Auth::attempt($formFields);
-                if ($auth) {
-                    TourbaseUser::where('user_id',$auth->id)->update([
-                        'botStatus' => 'logined',
-                        'botUser' => $update->message->from->id,
-                    ]);
-                } else {
-                    $userdata = array(
-                        'status' => 'started',
-                        'input' => $update->message->text
-                    );
-                    Telegram::where('user_id', '=', $update->message->from->id)->update($userdata);
-                    $data = [
-                        'chat_id' => $update->message->chat->id,
-                        'text' => 'Неправильный логин или пароль!',
-                        'reply_to_message_id' => $update->message->message_id,
-                    ];
-                    $response = Http::get("https://api.telegram.org/bot5716304295:AAHVDPCzodAQOwQU5G-7kLfRUU7AVa2VTRg/sendMessage?" . http_build_query($data));
                 }
             }
         }
