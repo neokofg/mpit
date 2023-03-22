@@ -9,6 +9,7 @@ use App\Models\TourbaseUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class TourBaseController extends Controller
 {
@@ -75,6 +76,15 @@ class TourBaseController extends Controller
             'phone' => $phone,
             'status' => 'pending'
         ]);
+
+        $tourbasePush = TourbaseUser::where('tourbase_id',$id)->first();
+        if(isset($tourbasePush->botUser)){
+            $data = [
+                'chat_id' => $tourbasePush->botUser,
+                'text' => 'К вам пришло новое бронирование!',
+            ];
+            $response = Http::get("https://api.telegram.org/bot6112927855:AAF-Rc36LyNcLeFuyjJw8vdEfDBw_QEnhMo/sendMessage?" . http_build_query($data));
+        }
         return back();
     }
     protected function createNewRating(Request $request)
