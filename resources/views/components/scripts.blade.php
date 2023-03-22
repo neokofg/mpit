@@ -1,4 +1,4 @@
-<script src="{{asset('https://unpkg.com/boxicons@2.1.4/dist/boxicons.js')}}"></script>
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 <script src="{{asset('js/lib/jquery.min.js')}}"></script>
 <script src="{{asset('js/lib/slick.min.js')}}"></script>
 <script src="{{asset('js/lib/jquery.nice-select.min.js')}}"></script>
