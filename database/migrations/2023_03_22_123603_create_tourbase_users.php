@@ -16,6 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignId('tourbase_id')->references('id')->on('tourbases');
             $table->foreignId('user_id')->references('id')->on('users');
+            $table->string('botStatus');
         });
     }
 
