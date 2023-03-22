@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GetController;
@@ -17,6 +19,9 @@ use App\Http\Controllers\MoneyController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+if (App::environment('production')) {
+    URL::forceScheme('https');
+}
 
 Route::get('/', [GetController::class, 'getIndex'])->name('index');
 Route::get('/profile', [GetController::class, 'getProfile'])->name('profile');
