@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use App\Models\Rating;
 use App\Models\Tourbase;
+use App\Models\TourbaseUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -20,22 +21,39 @@ class TourBaseController extends Controller
             'images' => 'required',
             'images.*' =>'mimes:jpeg,png,jpg,gif,svg'
         ]);
-        $name = $request->input('name');
-        $description = $request->input('description');
-        $coords = $request->input('coords');
-        foreach($request->file('images') as $key => $image)
-        {
-            $fileName= date('YmdHi').$image->hashName();
-            $image-> move(public_path('images'), $fileName);
-            $insert[$key]['name'] = $fileName;
+
+        try {
+            DB::beginTransaction();
+
+            $name = $request->input('name');
+            $description = $request->input('description');
+            $coords = $request->input('coords');
+            foreach($request->file('images') as $key => $image) {
+                $fileName = date('YmdHi').$image->hashName();
+                $image->move(public_path('images'), $fileName);
+                $insert[$key]['name'] = $fileName;
+            }
+
+            $tourbase = Tourbase::create([
+                'name' => $name,
+                'description' => $description,
+                'coords' => $coords,
+                'images' => json_encode($insert)
+            ]);
+
+            TourbaseUser::create([
+                'tourbase_id' => $tourbase->id,
+                'user_id' => Auth::user()->id,
+            ]);
+
+            DB::commit();
+
+            return back();
+
+        } catch (\Exception $e) {
+            DB::rollback();
+            throw $e;
         }
-        Tourbase::create([
-            'name' => $name,
-            'description' => $description,
-            'coords' => $coords,
-            'images' => json_encode($insert)
-        ]);
-        return back();
     }
     protected function createNewBooking(Request $request)
     {
