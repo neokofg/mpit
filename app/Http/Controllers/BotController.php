@@ -80,8 +80,8 @@ class BotController extends Controller
                         'email' => $user->input,
                         'password' => $update->message->text
                     ]);
-                    if ($auth = Auth::attempt($formFields)) {
-                        TourbaseUser::where('user_id',$auth->id)->update([
+                    if (Auth::attempt($formFields)) {
+                        TourbaseUser::where('user_id',Auth::user()->id)->update([
                             'botStatus' => 'logined',
                             'botUser' => $update->message->from->id,
                         ]);
