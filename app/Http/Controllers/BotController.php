@@ -18,7 +18,7 @@ class BotController extends Controller
                 'reply_to_message_id' => $update->message->message_id,
                 'text' => 'Здравствуйте! Я ваш личный помощник по агрегатору Tourclick!!!'.PHP_EOL.'Для начала войдите в свой аккаунт'
             ];
-            $response = Http::get("https://api.telegram.org/bot5716304295:AAHVDPCzodAQOwQU5G-7kLfRUU7AVa2VTRg/sendMessage?" . http_build_query($data));
+            $response = Http::get("https://api.telegram.org/bot6112927855:AAF-Rc36LyNcLeFuyjJw8vdEfDBw_QEnhMo/sendMessage?" . http_build_query($data));
         }
     }
 }
