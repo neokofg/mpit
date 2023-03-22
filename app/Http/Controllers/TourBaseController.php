@@ -111,7 +111,7 @@ class TourBaseController extends Controller
             ];
             $response = Http::get("https://api.telegram.org/bot6112927855:AAF-Rc36LyNcLeFuyjJw8vdEfDBw_QEnhMo/sendMessage?" . http_build_query($data));
         }
-        return back();
+        return to_route('profile');
     }
     protected function createNewRating(Request $request)
     {
