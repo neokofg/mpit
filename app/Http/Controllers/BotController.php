@@ -75,17 +75,12 @@ class BotController extends Controller
                     ];
                     $response = Http::get("https://api.telegram.org/bot6112927855:AAF-Rc36LyNcLeFuyjJw8vdEfDBw_QEnhMo/sendMessage?" . http_build_query($data));
                 } else if ($user->status == 'password') {
-                    $userdata = array(
-                        'status' => 'login'
-                    );
-                    Telegram::where('user_id', '=', $update->message->from->id)->update($userdata);
                     $user = $user->fresh();
                     $formFields = array([
                         'email' => $user->input,
                         'password' => $update->message->text
                     ]);
-                    $auth = Auth::attempt($formFields);
-                    if ($auth) {
+                    if ($auth = Auth::attempt($formFields)) {
                         TourbaseUser::where('user_id',$auth->id)->update([
                             'botStatus' => 'logined',
                             'botUser' => $update->message->from->id,
