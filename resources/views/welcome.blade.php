@@ -7,15 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=be203022-19da-4b49-8bcb-5ca04a8cb7ea&lang=ru_RU" type="text/javascript">
-    </script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=be203022-19da-4b49-8bcb-5ca04a8cb7ea&lang=ru_RU" type="text/javascript"></script>
     @livewireStyles
 </head>
 <style>
-    #map {
-        width: 600px;
-        height: 400px;
-    }
     #map2 {
         width: 100%;
         height: 600px;
@@ -36,6 +31,7 @@
                 <a href="{{route('page',$tourbase->id)}}">Перейти</a>
             </div>
         @endforeach
+        <div id="map2"></div>
     @else
     <h2>Регистрация</h2>
     <form action="{{route('auth.createUser')}}" method="POST">
@@ -58,38 +54,10 @@
         <button>submit</button>
     </form>
     @endif
-    <div id="map2"></div>
     <script>
         ymaps.ready(init);
 
         function init() {
-            var myMap = new ymaps.Map("map", {
-                center: [62.03, 129.73],
-                zoom: 10,
-                suppressMapOpenBlock: true
-            });
-
-            // Добавляем слушателя клика на карту
-            myMap.events.add('click', function (e) {
-                var coords = e.get('coords');
-                myPlacemark.geometry.setCoordinates(coords);
-                // Устанавливаем координаты в инпуте
-                $('#coords').val(coords);
-            });
-
-            var myPlacemark = new ymaps.Placemark(myMap.getCenter(), {}, {
-                draggable: true
-            });
-
-            myMap.geoObjects.add(myPlacemark);
-
-            // При перемещении метки обновляем координаты в инпуте
-            myPlacemark.events.add('dragend', function () {
-                var coords = myPlacemark.geometry.getCoordinates();
-                $('#coords').val(coords);
-                console.log(coords)
-            });
-
             var myMap2 = new ymaps.Map("map2", {
                 center: [62.03, 129.73],
                 zoom: 10,
@@ -102,7 +70,7 @@
                 preset: 'islands#icon',
                 iconColor: '#0095b6'
             });
-                myMap2.geoObjects.add(myPlacemark{{$tourbase->id}});
+            myMap2.geoObjects.add(myPlacemark{{$tourbase->id}});
             @endforeach
         }
     </script>
