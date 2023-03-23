@@ -86,7 +86,7 @@
                 </div>
 
                 <div class="gallery">
-                    <img src="{{asset('img/content/photo-1.1.jpg')}}" style="border-radius: 24px" width="100%" alt="Gallery">
+                    <img src="{{asset('images/'.$tourbase['name'])}}" style="border-radius: 24px" width="100%" alt="Gallery">
                 </div>
             </div>
         </div>
