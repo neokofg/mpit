@@ -47,7 +47,7 @@ class MoneyController extends Controller
             'expirationDateTime' => $iso8601String,
             'email' => 'wotacc0809@gmail.com',
             'account' => 'client4563',
-            'successUrl' => 'http://tourclick.online/createNewBooking/'.$tourbase_id.'/'.$phone.'/'.$peoples.'/'.$date.'/'.$billId ,
+            'successUrl' => 'https://tourclick.online/createNewBooking/'.$tourbase_id.'/'.$phone.'/'.$peoples.'/'.$date.'/'.$billId ,
         ];
 
         /** @var \Qiwi\Api\BillPayments $billPayments */

@@ -22,7 +22,8 @@ class TourBaseController extends Controller
             'coords' => 'required',
             'location' => 'required',
             'images' => 'required',
-            'images.*' =>'mimes:jpeg,png,jpg,gif,svg'
+            'images.*' =>'mimes:jpeg,png,jpg,gif,svg',
+            'classification' => 'required'
         ]);
         $exists = TourbaseUser::where('user_id', Auth::user()->id)->exists();
         if ($exists) {
@@ -35,6 +36,7 @@ class TourBaseController extends Controller
                 $description = $request->input('description');
                 $coords = $request->input('coords');
                 $location = $request->input('location');
+                $classification = $request->input('classification');
                 foreach($request->file('images') as $key => $image) {
                     $fileName = date('YmdHi').$image->hashName();
                     $image->move(public_path('images'), $fileName);
@@ -46,7 +48,8 @@ class TourBaseController extends Controller
                     'description' => $description,
                     'coords' => $coords,
                     'location' => $location,
-                    'images' => json_encode($insert)
+                    'images' => json_encode($insert),
+                    'classification' => implode(',', $classification)
                 ]);
 
                 TourbaseUser::create([

@@ -15,6 +15,18 @@
         <br>
         <input type="text" name="location" placeholder="location">
         <br>
+        <label for="classification1">На реке</label>
+        <input type="checkbox" name="classification[]" id="classification1" value="На реке">
+        <br>
+        <label for="classification2">Рыбалка</label>
+        <input type="checkbox" name="classification[]" id="classification2" value="Рыбалка">
+        <br>
+        <label for="classification3">В горах</label>
+        <input type="checkbox" name="classification[]" id="classification3" value="В горах">
+        <br>
+        <label for="classification4">Недалеко от города</label>
+        <input type="checkbox" name="classification[]" id="classification4" value="Недалеко от города">
+        <br>
         <textarea name="description" id="" cols="30" rows="10" placeholder="description"></textarea>
         <br>
         <input type="file" name="images[]" multiple>

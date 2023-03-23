@@ -7,12 +7,15 @@ use App\Models\Rating;
 use App\Models\Tourbase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class GetController extends Controller
 {
     protected function getIndex()
     {
-        $tourbases = Tourbase::take(9)->get();
+        $tourbases = Cache::remember('IndexTours',30, function(){
+           return  Tourbase::take(9)->get();
+        });
         return view('welcome', compact(['tourbases']));
     }
 

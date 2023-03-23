@@ -134,7 +134,7 @@ return [
         'key' => env('MEILISEARCH_KEY', null),
         'index-settings' => [
             'tourbases' => [
-               'filterableAttributes'=> ['name','description','location'],
+               'filterableAttributes'=> ['name','description','location','classification'],
             ],
         ],
     ],

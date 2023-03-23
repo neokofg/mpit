@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
@@ -16,7 +17,8 @@ class Tourbase extends Model
         'images',
         'coords',
         'rating',
-        'location'
+        'location',
+        'classification'
     ];
     public function getFirstImage(): ?string
     {
@@ -31,5 +33,12 @@ class Tourbase extends Model
     public function searchableAs()
     {
         return 'tourbases_index';
+    }
+    public function scopeSearch(Builder $query, $searchTerm)
+    {
+        return $query->where(function (Builder $query) use ($searchTerm) {
+            $query->where('name', 'LIKE', '%' . $searchTerm . '%')
+                ->orWhere('classification', 'LIKE', '%' . $searchTerm . '%');
+        });
     }
 }

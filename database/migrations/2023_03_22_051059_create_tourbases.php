@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->text('images');
             $table->text('location');
+            $table->text('classification');
             $table->float('rating')->nullable();
         });
     }

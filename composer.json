@@ -14,10 +14,12 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^2.12",
         "meilisearch/meilisearch-php": "^1.0",
+        "predis/predis": "^2.1",
         "qiwi/bill-payments-php-sdk": "^0.2.2",
         "yandex-money/yandex-money-sdk-php": "^3.0"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.8",
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",
