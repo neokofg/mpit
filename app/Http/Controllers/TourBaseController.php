@@ -67,39 +67,15 @@ class TourBaseController extends Controller
             }
         }
     }
-    protected function createNewBooking($id,$phone,$peoples,$date,$billId)
+    protected function createNewBooking(Request $request)
     {
-        $rules = [
-            'date' => 'required|date',
-            'peoples' => 'required|integer',
-            'phone' => 'required',
-            'id' => 'required',
-            'billId' => 'required'
-        ];
+//        {id}/{phone}/{peoples}/{date}/{billId}
 
-        // Определяем пользовательские сообщения об ошибках
-        $messages = [
-            'date.required' => 'Поле "date" обязательно для заполнения',
-            'date.date' => 'Поле "date" должно быть датой',
-            'peoples.required' => 'Поле "peoples" обязательно для заполнения',
-            'peoples.integer' => 'Поле "peoples" должно быть целым числом',
-            'phone.required' => 'Поле "phone" обязательно для заполнения',
-            'id.required' => 'Поле "id" обязательно для заполнения'
-        ];
-
-        // Выполняем валидацию полей
-        $validator = Validator::make([
-            'date' => $date,
-            'peoples' => $peoples,
-            'phone' => $phone,
-            'id' => $id,
-            'billId' => $billId
-        ], $rules, $messages);
-
-        // Если данные не прошли валидацию, мы должны вернуть ошибки
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator);
-        }
+        $id = $request->input('id');
+        $phone = $request->input('phone');
+        $peoples = $request->input('peoples');
+        $date = $request->input('date');
+        $billId = $request->input('billId');
         $booking = Booking::create([
             'tourbase_id' => $id,
             'user_id' => Auth::user()->id,
