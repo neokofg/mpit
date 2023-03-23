@@ -65,4 +65,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'isAdmin' => \App\Http\Middleware\isAdmin::class
     ];
+    protected $routeMiddleware = [
+        // ...
+        'setHttpScheme' => \App\Http\Middleware\SetHttpSchemeForSpecificRoutes::class,
+    ];
 }

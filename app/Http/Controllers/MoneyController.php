@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Qiwi\Api\BillPayments;
 use Ramsey\Uuid\Uuid;
@@ -46,8 +47,8 @@ class MoneyController extends Controller
             'comment' => 'test',
             'expirationDateTime' => $iso8601String,
             'email' => 'wotacc0809@gmail.com',
-            'account' => 'client4563',
-            'successUrl' => 'https://tourclick.online/createNewBooking/'.$tourbase_id.'/'.$phone.'/'.$peoples.'/'.$date.'/'.$billId ,
+            'account' => Auth::user()->id,
+            'successUrl' => 'http://tourclick.online/createNewBooking/'.$tourbase_id.'/'.$phone.'/'.$peoples.'/'.$date.'/'.$billId ,
         ];
 
         /** @var \Qiwi\Api\BillPayments $billPayments */
