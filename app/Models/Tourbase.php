@@ -18,6 +18,16 @@ class Tourbase extends Model
         'rating',
         'location'
     ];
+    public function getFirstImage(): ?string
+    {
+        $images = json_decode($this->images, true);
+
+        if (is_array($images) && isset($images[0]) && isset($images[0]['name'])) {
+            return $images[0]['name'];
+        }
+
+        return null;
+    }
     public function searchableAs()
     {
         return 'tourbases_index';

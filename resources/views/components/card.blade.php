@@ -1,5 +1,5 @@
 <a class="card" href="{{route('page',$tourbase->id)}}">
-    <div class="card__preview"><img srcset="img/content/card-pic-1@2x.jpg 2x" src="img/content/card-pic-1.jpg" alt="Entire serviced classy moutain house">
+    <div class="card__preview"><img srcset="img/content/card-pic-1@2x.jpg 2x" src="images/{{$tourbase->getFirstImage()}}" alt="Entire serviced classy moutain house">
     </div>
     <div class="card__body">
         <div class="card__line">

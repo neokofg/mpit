@@ -13,6 +13,41 @@
         color: gray;
         pointer-events: none;
     }
+    .carousel {
+        display: flex;
+        overflow: hidden;
+        width: 100%;
+        height: 80vh;
+        position: relative;
+    }
+    .carousel-inner {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.5s;
+    }
+    .carousel-item {
+        flex: 0 0 100%;
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    .carousel-control-prev, .carousel-control-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 10px;
+        border-radius: 50%;
+    }
+    .carousel-control-prev {
+        left: 10px;
+    }
+    .carousel-control-next {
+        right: 10px;
+    }
 </style>
 {{--<body>--}}
 {{--<div class="col-3 align-self-start">--}}
@@ -86,7 +121,19 @@
                 </div>
 
                 <div class="gallery">
-                    <img src="{{asset('images/'.$tourbase['name'])}}" style="border-radius: 24px" width="100%" alt="Gallery">
+                    <div id="carousel" class="carousel">
+                        <div class="carousel-inner">
+                            @foreach($images as $key => $value)
+                                <div class="carousel-item" style="background-image: url('/images/{{$value['name']}}');"></div>
+                            @endforeach
+                        </div>
+                        <button class="carousel-control-prev" type="button">
+                            <span class="carousel-control-prev-icon" aria-hidden="true">◀</span>
+                        </button>
+                        <button class="carousel-control-next" type="button">
+                            <span class="carousel-control-next-icon" aria-hidden="true">▶</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -130,9 +177,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
                     <div class="receipt__description receipt__description_flex">
                         <div class="datepicker">
                             <div class="datepicker__item">
@@ -370,6 +414,34 @@
         <!-- scripts-->
         <x-scripts></x-scripts>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+        <script>
+            const carousel = document.getElementById('carousel');
+            const carouselInner = carousel.querySelector('.carousel-inner');
+            const prevButton = carousel.querySelector('.carousel-control-prev');
+            const nextButton = carousel.querySelector('.carousel-control-next');
+            let currentSlide = 0;
+
+            function moveToSlide(slideIndex) {
+                currentSlide = slideIndex;
+                carouselInner.style.transform = `translateX(-${slideIndex * 100}%)`;
+            }
+
+            prevButton.addEventListener('click', () => {
+                if (currentSlide === 0) {
+                    moveToSlide(carouselInner.children.length - 1);
+                } else {
+                    moveToSlide(currentSlide - 1);
+                }
+            });
+
+            nextButton.addEventListener('click', () => {
+                if (currentSlide === carouselInner.children.length - 1) {
+                    moveToSlide(0);
+                } else {
+                    moveToSlide(currentSlide + 1);
+                }
+            });
+        </script>
         <script>
             ymaps.ready(init);
 
