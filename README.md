@@ -7,16 +7,18 @@
 
 ## 🛠 Технологии
 
-- Laravel
-- PostgreSQL
-- Redis (Cache)
-- Meilisearch (Поиск)
-- Laravel Sail
-- Laravel Scout
-- Laravel Livewire
-- Docker
-- Github Actions ( CI / CD )
-- Telegram API
-- Qiwi API
-- VPS(nginx + docker) + Домен
+- 🎆 Laravel
+- 🐘 PostgreSQL
+- 🧊 Redis (Cache)
+- 🔍 Meilisearch (Поиск)
+- ⛵ Laravel Sail
+- 🕵️ Laravel Scout
+- ⚡ Laravel Livewire
+- 🍂 Laravel Octane
+- 🚀 Roadrunner
+- 🐳 Docker
+- ⚙️ Github Actions ( CI / CD )
+- 🤖 Telegram API
+- 💸 Qiwi API
+- 🌐 VPS (nginx + docker + roadrunner) + Домен
 </pre>
