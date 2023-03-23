@@ -42,29 +42,22 @@
             <a class="header__logo" href="/"><img class="some-icon" src="img/logo-dark.svg" alt="Fleet"><img class="some-icon-dark" src="img/logo-light.svg" alt="Fleet"></a>
             <div class="header__wrapper js-header-wrapper">
                 <div class="header__item header__item_dropdown js-header-item">
-                    <button class="header__head js-header-head">Travelers
+                    <button class="header__head js-header-head">Главная
                 <svg class="icon icon-arrow-down">
                   <use xlink:href="#icon-arrow-down"></use>
                 </svg>
               </button>
                     <div class="header__body js-header-body">
                         <div class="header__menu">
-                            <a class="header__link active" href="/">
+                            <a class="header__link active" href="">
                                 <svg class="icon icon-comment">
                       <use xlink:href="#icon-comment"></use>
-                    </svg>Stays</a>
-                            <a class="header__link" href="flights.html">
+                    </svg>Базы</a>
+                            <a class="header__link" href="">
                                 <svg class="icon icon-email">
                       <use xlink:href="#icon-email"></use>
-                    </svg>Flights</a>
-                            <a class="header__link" href="things-to-do.html">
-                                <svg class="icon icon-home">
-                      <use xlink:href="#icon-home"></use>
-                    </svg>Things to do</a>
-                            <a class="header__link" href="cars.html">
-                                <svg class="icon icon-email">
-                      <use xlink:href="#icon-email"></use>
-                    </svg>Cars</a>
+                    </svg>О нас</a>
+                            
                         </div>
                     </div>
                 </div>
@@ -100,7 +93,7 @@
                               <use xlink:href="#icon-location"></use>
                             </svg>
                                     </div>
-                                    <input class="location__input js-location-input" type="text" name="location" autocomplete="off" placeholder="Location" />
+                                    <input class="location__input js-location-input" type="text" name="locain" autocomplete="off" placeholder="Поиск" />
                                     <button class="location__clear js-location-clear">
                             <svg class="icon icon-close-circle">
                               <use xlink:href="#icon-close-circle"></use>
@@ -112,98 +105,7 @@
                                             href="#">New Smyrna Beach, FL</a><a class="location__item js-location-item" href="#">Newark, NJ</a></div>
                                 </div>
                             </div>
-                            <div class="datepicker js-date-range datepicker_small" data-format="MMM DD, YYYY" data-container=".datepicker">
-                                <div class="datepicker__list">
-                                    <div class="datepicker__item">
-                                        <input class="datepicker__input js-date-from" type="text" placeholder="Check in" readonly="readonly" />
-                                        <div class="datepicker__icon">
-                                            <svg class="icon icon-calendar">
-                                <use xlink:href="#icon-calendar"></use>
-                              </svg>
-                                        </div>
-                                    </div>
-                                    <div class="datepicker__item">
-                                        <input class="datepicker__input js-date-to" type="text" placeholder="Check out" readonly="readonly" />
-                                        <div class="datepicker__icon">
-                                            <svg class="icon icon-calendar">
-                                <use xlink:href="#icon-calendar"></use>
-                              </svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="travelers js-travelers travelers_small">
-                                <div class="travelers__head js-travelers-head">
-                                    <div class="travelers__icon">
-                                        <svg class="icon icon-user">
-                              <use xlink:href="#icon-user"></use>
-                            </svg>
-                                    </div>
-                                    <div class="travelers__content js-travelers-content">Travelers</div>
-                                </div>
-                                <div class="travelers__body js-travelers-body">
-                                    <div class="travelers__item">
-                                        <div class="travelers__details">
-                                            <div class="travelers__category">Adults</div>
-                                            <div class="travelers__text">Ages 13 or above</div>
-                                        </div>
-                                        <div class="counter js-counter" data-min="0">
-                                            <button class="counter__button js-counter-button js-counter-minus disabled" type="button">
-                                <svg class="icon icon-minus-circle">
-                                  <use xlink:href="#icon-minus-circle"></use>
-                                </svg>
-                              </button>
-                                            <div class="counter__value js-counter-value"></div>
-                                            <button class="counter__button js-counter-button js-counter-plus" type="button">
-                                <svg class="icon icon-plus-circle">
-                                  <use xlink:href="#icon-plus-circle"></use>
-                                </svg>
-                              </button>
-                                            <input class="js-counter-input js-counter-result js-counter-adults" type="hidden" />
-                                        </div>
-                                    </div>
-                                    <div class="travelers__item">
-                                        <div class="travelers__details">
-                                            <div class="travelers__category">Children</div>
-                                            <div class="travelers__text">Ages 2 - 12</div>
-                                        </div>
-                                        <div class="counter js-counter" data-min="0">
-                                            <button class="counter__button js-counter-button js-counter-minus disabled" type="button">
-                                <svg class="icon icon-minus-circle">
-                                  <use xlink:href="#icon-minus-circle"></use>
-                                </svg>
-                              </button>
-                                            <div class="counter__value js-counter-value"></div>
-                                            <button class="counter__button js-counter-button js-counter-plus" type="button">
-                                <svg class="icon icon-plus-circle">
-                                  <use xlink:href="#icon-plus-circle"></use>
-                                </svg>
-                              </button>
-                                            <input class="js-counter-input js-counter-result js-counter-children" type="hidden" />
-                                        </div>
-                                    </div>
-                                    <div class="travelers__item">
-                                        <div class="travelers__details">
-                                            <div class="travelers__category">Adults</div>
-                                            <div class="travelers__text">Under 2</div>
-                                        </div>
-                                        <div class="counter js-counter" data-min="0">
-                                            <button class="counter__button js-counter-button js-counter-minus disabled" type="button">
-                                <svg class="icon icon-minus-circle">
-                                  <use xlink:href="#icon-minus-circle"></use>
-                                </svg>
-                              </button>
-                                            <div class="counter__value js-counter-value"></div>
-                                            <button class="counter__button js-counter-button js-counter-plus" type="button">
-                                <svg class="icon icon-plus-circle">
-                                  <use xlink:href="#icon-plus-circle"></use>
-                                </svg>
-                              </button>
-                                            <input class="js-counter-input js-counter-result js-counter-babies" type="hidden" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                             <button class="panel__search">
                         <svg class="icon icon-search">
                           <use xlink:href="#icon-search"></use>
