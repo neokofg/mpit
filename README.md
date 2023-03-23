@@ -18,4 +18,5 @@
 - Github Actions ( CI / CD )
 - Telegram API
 - Qiwi API
+- VPS(nginx + docker) + Домен
 </pre>
