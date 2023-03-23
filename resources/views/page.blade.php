@@ -398,7 +398,7 @@
                         </div>
                     </form>
                     <div class="comment__head">
-                        <div class="comment__title">3 комментарии</div>
+                        <div class="comment__title">{{App\Models\Rating::where('tourbase_id', $tourbase->id)->count()}} комментарии</div>
                     </div>
                     <div class="comment__list">
                         @foreach($ratings as $rating)

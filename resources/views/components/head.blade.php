@@ -10,4 +10,5 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" media="all" href="{{asset('css/app.min.css')}}">
+    <link rel="manifest" href="manifest.json">
 </head>
